@@ -37,7 +37,12 @@ inputSearch = e => {
   this.setState({ filter: e.target.value });
   
 }
-
+filteredContacts = () => {
+  const { contacts, filter } = this.state;
+  return contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
+};
 
 
   render() {
@@ -65,21 +70,15 @@ inputSearch = e => {
             <button type="submit">Add contact</button>
           </Form>
         </Formik>
-        <label htmlFor="search"> Find contact</label>
-<input type="text" value = {this.state.filter} onChange={this.inputSearch} />
-        <h2>Contacts</h2>
-
-
-        <p>Введений текст: {this.state.filter}</p>
-        
-        
-        
-        <ul>
-          {this.state.contacts.map(contact => (
-            <li key={contact.id}>{contact.name}{ `: `}{contact.number}</li>
-          ))}
-        </ul>
-      </div>
+        <label htmlFor="search">Find contacts by name</label>
+      <input type="text" value={this.state.filter} onChange={this.inputSearch} />
+      <h2>Contacts</h2>
+      <ul>
+        {this.filteredContacts().map(contact => (
+          <li key={contact.id}>{contact.name}: {contact.number}</li>
+        ))}
+      </ul>
+    </div>
     );
   }
 }

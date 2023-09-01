@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {Form} from 'formik';
 export const InputForm = styled.div `
-width: 400px;
 margin-left: 20px;
 padding: 20px;
 border: 2px solid green;
@@ -38,3 +37,8 @@ font-weight: 500;
 export const TitleText = styled.h2`
 margin-left: 20px;
 `;
+ export const Wrapper = styled.div`
+ display: block;
+ width: 400px;
+ 
+ `;
